@@ -25,13 +25,21 @@ class Spaceship extends Floater
     {
       myPointDirection = d;
     }
-    public void setCenterX(double c)
+    public void setCenterX(float c)
     {
      myCenterX = c; 
     }
-    public void setCenterY(double y)
+    public void setCenterY(float y)
     {
      myCenterY = y; 
+    }
+    public float getmyX()
+    {
+      return myCenterX;
+    }
+    public float getmyY()
+    {
+      return myCenterY;
     }
     
     /*
