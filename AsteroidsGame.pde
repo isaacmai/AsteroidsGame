@@ -1,5 +1,6 @@
 //your variable declarations here
 Spaceship ship = new Spaceship();
+ArrayList <Bullet> shots = new ArrayList <Bullet>();
 ArrayList <Asteroid> asteroids = new ArrayList<Asteroid>();
 Star[] nightSky = new Star[200];
 public void setup() 
@@ -10,11 +11,11 @@ public void setup()
   {
     nightSky[i] = new Star();
   }
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 8; i++)
   {
     Asteroid bob = new Asteroid();
     asteroids.add(bob);
-  }
+  } 
 }
 public void keyPressed()
 {
@@ -42,6 +43,10 @@ public void keyPressed()
   {
    ship.turn(10); 
   }
+  if (key == ' ')
+  {
+   shots.add(new Bullet(ship));
+  }
 }
 
 public void draw() 
@@ -49,6 +54,11 @@ public void draw()
   background(0);
   ship.show();
   ship.move();
+  for (int i = 0; i < shots.size(); i++)
+  {
+    shots.get(i).move();
+    shots.get(i).show();
+  }
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i].show();
@@ -62,4 +72,17 @@ public void draw()
     asteroids.remove(i);
   }
  }
+   for (int i = 0; i < shots.size(); i++)
+   {
+     for(int p = 0; p < asteroids.size(); p++)
+     {
+    double s = dist(shots.get(i).gitmyX(), shots.get(i).gitmyY(), asteroids.get(p).getmyX(), asteroids.get(p).getmyY());
+    if (s < 15)
+    {
+    asteroids.remove(p);
+    shots.remove(i);
+    break;
+      }
+    }
+  }
 }
