@@ -6,6 +6,7 @@ Star[] nightSky = new Star[200];
 public void setup() 
 {
   //your code here
+  ship.show();
   size(500, 500);
   for (int i = 0; i < nightSky.length; i++)
   {
@@ -52,16 +53,16 @@ public void keyPressed()
 public void draw() 
 {
   background(0);
+  for (int i = 0; i < nightSky.length; i++)
+  {
+    nightSky[i].show();
+  }
   ship.show();
   ship.move();
   for (int i = 0; i < shots.size(); i++)
   {
     shots.get(i).move();
     shots.get(i).show();
-  }
-  for (int i = 0; i < nightSky.length; i++)
-  {
-    nightSky[i].show();
   }
   for (int i = 0; i < asteroids.size(); i++)
   {
